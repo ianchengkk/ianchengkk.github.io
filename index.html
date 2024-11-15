@@ -9,6 +9,7 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 50px;
+	    background-color: #E6E6FA
         }
         h1 {
             color: #4CAF50;
@@ -19,5 +20,123 @@
 </head>
 <body>
     <h1>Hello, World! Welcome to my Lucky 235 site. Big Success! #235</h1>
+
+<h2>Short Story: The Clockmaker’s Secret in Hong Kong</h2>
+
+<p>In the bustling streets of Central Hong Kong, tucked between high-rise buildings and neon-lit shops, stood an old clock repair store called Timeless Wonders. Unlike the sleek boutiques around it, the shop had wooden shelves lined with timepieces of every kind—grandfather clocks, pocket watches, and wall-mounted pendulums. Its owner, a quiet old man named Mr. Lam, was a master clockmaker known for his craftsmanship and an aura of mystery.</p>
+<p> One humid evening, as the city buzzed with the chatter of markets and trams clanged on their tracks, a young woman named Mei stepped into the shop. She held a tarnished pocket watch, its golden surface dull, and its hands frozen at 3:15. "It belonged to my grandfather," she said softly, her voice tinged with nostalgia. "He always said it held a secret, but now it doesn’t even tell time." </p>
+<p> Mr. Lam took the watch from her, examining it with his meticulous eye. "Every clock carries a story," he said in a voice as smooth as silk. "Sometimes, those stories are more extraordinary than they seem." He promised Mei the watch would be ready in a week.</p>
+<p> That night, as rain pattered on the city’s narrow streets, Mr. Lam sat under the flickering light of his shop. As he dismantled the pocket watch, he discovered a hidden compartment in its mechanism. Inside was a slip of aged paper, folded tightly. The message read: To pause time, press the crown at exactly 3:15. </p>
+<p> Mr. Lam smiled, dismissing it as an old superstition. Yet, curiosity gnawed at him. The next evening, just as the nearby Star Ferry’s horn echoed across the harbor, he pressed the crown at precisely 3:15. </p>
+<p> The world froze. The shop’s ticking clocks fell silent, the neon lights outside flickered and froze mid-glow, and the raindrops on his window hung motionless like crystal beads. </p>
+<p> For a while, Mr. Lam wandered the stillness of Hong Kong. He strolled through the wet markets where fishmongers were caught mid-shout, and he stood on the Victoria Harbour waterfront, marveling at the frozen ripples in the water. The city, always alive and bustling, had become a silent masterpiece. </p>
+<p> As time resumed, Mr. Lam realized the power of the watch was as much a responsibility as it was a gift. Over the following nights, he used it sparingly. He stopped a vendor’s cart from rolling into traffic, placed a man’s forgotten wallet back on a tram seat, and removed a falling signboard before it could harm anyone. But he always remained discreet, letting life unfold naturally. </p>
+<p> When Mei returned a week later, the humid air filled with the scent of roasted chestnuts from a street vendor, Mr. Lam handed her the restored watch. "It’s more than just a timepiece," he said, his voice calm but weighted with meaning. "Use it wisely." </p>
+<p> Mei tilted her head, curious about his words, but she simply nodded. As she walked away, the city’s glow reflected in her eyes. </p>
+<p> Years passed, and Mr. Lam never saw Mei again. Yet sometimes, when he stood at his workbench and heard the hum of the city beyond his shop, he wondered. Perhaps, somewhere in the vibrant maze of Hong Kong, the pocket watch’s secret was shaping moments in ways only the watchbearer could understand. </p>
+
+<h2>Visit our non-profit: The Clockmaker’s Secret in Hong Kong</h2>
+
+<canvas id="pong" width="800" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('pong');
+        const context = canvas.getContext('2d');
+
+        // Define Paddle and Ball properties
+        const paddleWidth = 10, paddleHeight = 100, ballSize = 10;
+        const player = { x: 0, y: canvas.height / 2 - paddleHeight / 2, score: 0 };
+        const computer = { x: canvas.width - paddleWidth, y: canvas.height / 2 - paddleHeight / 2, score: 0 };
+        const ball = { x: canvas.width / 2, y: canvas.height / 2, speedX: 4, speedY: 4 };
+
+        // Draw elements on the canvas
+        function drawRect(x, y, width, height, color = '#fff') {
+            context.fillStyle = color;
+            context.fillRect(x, y, width, height);
+        }
+
+        function drawCircle(x, y, radius, color = '#fff') {
+            context.fillStyle = color;
+            context.beginPath();
+            context.arc(x, y, radius, 0, Math.PI * 2);
+            context.closePath();
+            context.fill();
+        }
+
+        function drawText(text, x, y, font = '20px Arial', color = '#fff') {
+            context.fillStyle = color;
+            context.font = font;
+            context.fillText(text, x, y);
+        }
+
+        function resetBall() {
+            ball.x = canvas.width / 2;
+            ball.y = canvas.height / 2;
+            ball.speedX *= -1;
+        }
+
+        // Main game loop
+        function update() {
+            // Ball movement
+            ball.x += ball.speedX;
+            ball.y += ball.speedY;
+
+            // Ball collision with top and bottom
+            if (ball.y + ballSize > canvas.height || ball.y - ballSize < 0) {
+                ball.speedY *= -1;
+            }
+
+            // Ball collision with paddles
+            if (
+                (ball.x < player.x + paddleWidth && ball.y > player.y && ball.y < player.y + paddleHeight) ||
+                (ball.x > computer.x - paddleWidth && ball.y > computer.y && ball.y < computer.y + paddleHeight)
+            ) {
+                ball.speedX *= -1;
+            }
+
+            // Ball out of bounds
+            if (ball.x < 0) {
+                computer.score++;
+                resetBall();
+            }
+            if (ball.x > canvas.width) {
+                player.score++;
+                resetBall();
+            }
+
+            // Computer AI
+            computer.y += (ball.y - (computer.y + paddleHeight / 2)) * 0.1;
+        }
+
+        function render() {
+            // Clear the canvas
+            drawRect(0, 0, canvas.width, canvas.height, '#222');
+
+            // Draw paddles and ball
+            drawRect(player.x, player.y, paddleWidth, paddleHeight);
+            drawRect(computer.x, computer.y, paddleWidth, paddleHeight);
+            drawCircle(ball.x, ball.y, ballSize);
+
+            // Draw the scores
+            drawText(player.score, canvas.width / 4, 30);
+            drawText(computer.score, (3 * canvas.width) / 4, 30);
+        }
+
+        function gameLoop() {
+            update();
+            render();
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Player paddle movement
+        canvas.addEventListener('mousemove', event => {
+            const rect = canvas.getBoundingClientRect();
+            player.y = event.clientY - rect.top - paddleHeight / 2;
+        });
+
+        // Start the game loop
+        gameLoop();
+    </script>
+
 </body>
 </html>
