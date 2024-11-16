@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.2">
-    <title>Stock Market Movers</title>
+    <title>Stock Investing</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,8 +29,7 @@
         .button:hover {
             background-color: #0056b3;
         }
-	.stocks {
-            margin-bottom: 20px;
+	input { margin: 10px; padding: 5px; };
         }
         h3 {
             color: #007BFF;
@@ -60,75 +59,39 @@
   gtag('config', 'G-WMDRX5QE21');
 </script>
 <body>
-     <h1>Top Stock Gainers & Losers</h1>
-    <div id="stocks">
-        <div class="stocks">
-            <h3>Top 5 Gainers</h3>
-            <ul class="stock-list" id="gainers">
-                <li>Loading...</li>
-            </ul>
-        </div>
-        <div class="stocks">
-            <h3>Top 5 Losers</h3>
-            <ul class="stock-list" id="losers">
-                <li>Loading...</li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="error" class="error"></div>
+        <h1>Risk Tolerance Calculator</h1>
+    <p>Answer a few questions to understand your investment risk tolerance.</p>
+    <form id="riskForm">
+        <label for="age">Your Age:</label>
+        <input type="number" id="age" name="age" required><br>
+        <label for="investmentExperience">Investment Experience (years):</label>
+        <input type="number" id="investmentExperience" name="experience" required><br>
+        <label for="comfortLevel">How comfortable are you with market fluctuations?</label><br>
+        <select id="comfortLevel">
+            <option value="low">Not Comfortable</option>
+            <option value="medium">Somewhat Comfortable</option>
+            <option value="high">Very Comfortable</option>
+        </select><br><br>
+        <button type="button" onclick="calculateRisk()">Calculate</button>
+    </form>
+    <p id="result"></p>
 
     <script>
-        async function fetchStockData() {
-            const apiKey = 'P2FH67BS8DEZ393Q';
-            const symbols = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'TSLA']; // Example tickers
-            const apiUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&apikey=${apiKey}`;
+        function calculateRisk() {
+            const age = document.getElementById('age').value;
+            const experience = document.getElementById('investmentExperience').value;
+            const comfort = document.getElementById('comfortLevel').value;
 
-            try {
-                const stockData = [];
-                for (const symbol of symbols) {
-                    const response = await fetch(`${apiUrl}&symbol=${symbol}`);
-                    const data = await response.json();
-                    
-                    if (data['Time Series (Daily)']) {
-                        const dailyData = data['Time Series (Daily)'];
-                        const dates = Object.keys(dailyData).slice(0, 2);
-                        const today = dailyData[dates[0]];
-                        const yesterday = dailyData[dates[1]];
+            let riskLevel = 'Moderate';
 
-                        const closeToday = parseFloat(today['4. close']);
-                        const closeYesterday = parseFloat(yesterday['4. close']);
-                        const changePercent = ((closeToday - closeYesterday) / closeYesterday * 100).toFixed(2);
-
-                        stockData.push({
-                            symbol,
-                            changePercent,
-                            closeToday,
-                        });
-                    }
-                }
-
-                // Separate into gainers and losers
-                stockData.sort((a, b) => b.changePercent - a.changePercent);
-                const gainers = stockData.slice(0, 5);
-                const losers = stockData.slice(-5).reverse();
-
-                // Populate data
-                document.getElementById('gainers').innerHTML = gainers.map(stock => 
-                    `<li>${stock.symbol}: +${stock.changePercent}% ($${stock.closeToday})</li>`
-                ).join('');
-
-                document.getElementById('losers').innerHTML = losers.map(stock => 
-                    `<li>${stock.symbol}: ${stock.changePercent}% ($${stock.closeToday})</li>`
-                ).join('');
-
-            } catch (error) {
-                console.error('Error fetching stock data:', error);
-                document.getElementById('error').innerText = 'An error occurred while fetching stock data.';
+            if (age < 30 && comfort === 'high' && experience > 3) {
+                riskLevel = 'High';
+            } else if (age > 50 || comfort === 'low') {
+                riskLevel = 'Low';
             }
-        }
 
-        fetchStockData();
+            document.getElementById('result').innerText = `Your risk tolerance level is: ${riskLevel}`;
+        }
     </script>
 
 
