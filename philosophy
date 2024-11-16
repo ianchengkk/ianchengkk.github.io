@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.2">
+    <title>Lucky 235 - Philosophy Insights</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #FFFAF0;
+        }
+        h1 {
+            color: #6A5ACD;
+        }
+        h2 {
+            color: #333;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            color: white;
+            background-color: #6A5ACD;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #483D8B;
+        }
+        .philosophy-content {
+            text-align: left;
+            margin: 20px auto;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+        .collapsible {
+            background-color: #6A5ACD;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+        }
+        .collapsible:hover {
+            background-color: #483D8B;
+        }
+        .content {
+            padding: 0 15px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+            margin-bottom: 10px;
+        }
+        .quiz {
+            margin-top: 20px;
+            text-align: left;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .quiz button {
+            margin-top: 10px;
+            background-color: #32CD32;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .quiz button:hover {
+            background-color: #228B22;
+        }
+        .meme {
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+        }
+        .meme img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Lucky 235 - Philosophy Insights</h1>
+
+    <nav>
+        <a href="https://lucky235.com" class="button" target="_blank">Home</a>
+        <a href="fpl.html" class="button">FPL Insights</a>
+        <a href="chess.html" class="button">Chess Insights</a>
+        <a href="philosophy.html" class="button">Philosophy Insights</a>
+    </nav>
+
+    <h2>Philosophy Insights</h2>
+    <div class="philosophy-content">
+        <button type="button" class="collapsible">Fun Facts About Philosophers</button>
+        <div class="content">
+            <ul>
+                <li><strong>Socrates:</strong> Never wrote a single word himself. Everything we know about him comes from his students like Plato.</li>
+                <li><strong>Immanuel Kant:</strong> Was so punctual that neighbors set their clocks by his daily walks.</li>
+                <li><strong>Diogenes:</strong> Lived in a barrel and mocked Alexander the Great by saying, "Stand out of my sunlight!"</li>
+            </ul>
+        </div>
+
+        <button type="button" class="collapsible">Philosophy Memes</button>
+        <div class="content">
+            <div class="meme">
+                <img src="https://i.imgur.com/3DSkPTe.jpg" alt="Philosophy Meme 1">
+                <p>"I think, therefore I am... hungry." - Descartes</p>
+            </div>
+            <div class="meme">
+                <img src="https://i.imgur.com/Zg5efzK.jpg" alt="Philosophy Meme 2">
+                <p>"Nietzsche: God is dead. God: Nietzsche is dead." - Philosophy Battle</p>
+            </div>
+        </div>
+
+        <button type="button" class="collapsible">Philosophy Jokes</button>
+        <div class="content">
+            <ul>
+                <li>Why was Socrates so annoying? Because he kept asking questions!</li>
+                <li>What did the nihilist say to the optimist? "Nothing matters."</li>
+                <li>Why did the philosopher bring a ladder? To reach a higher level of understanding!</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Test Your Philosophy Knowledge</h2>
+    <div class="quiz">
+        <p>Who said "I think, therefore I am"?</p>
+        <button onclick="checkAnswer('a')">a) Socrates</button>
+        <button onclick="checkAnswer('b')">b) René Descartes</button>
+        <button onclick="checkAnswer('c')">c) Immanuel Kant</button>
+        <button onclick="checkAnswer('d')">d) Friedrich Nietzsche</button>
+        <p id="quiz-result"></p>
+    </div>
+
+    <script>
+        // Collapsible sections
+        const collapsibles = document.querySelectorAll(".collapsible");
+        collapsibles.forEach(button => {
+            button.addEventListener("click", () => {
+                button.classList.toggle("active");
+                const content = button.nextElementSibling;
+                content.style.display = content.style.display === "block" ? "none" : "block";
+            });
+        });
+
+        // Quiz functionality
+        function checkAnswer(choice) {
+            const result = document.getElementById("quiz-result");
+            if (choice === 'b') {
+                result.textContent = "Correct! René Descartes said 'I think, therefore I am.'";
+                result.style.color = "green";
+            } else {
+                result.textContent = "Incorrect. The correct answer is René Descartes.";
+                result.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
