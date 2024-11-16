@@ -54,4 +54,106 @@
             background-color: #0056b3;
         }
         .content {
-            padding: 
+            padding: 0 15px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+            margin-bottom: 10px;
+        }
+        .quiz {
+            margin-top: 20px;
+            text-align: left;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .quiz button {
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .quiz button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Lucky 235 - Chess Insights</h1>
+
+    <nav>
+        <a href="fpl.html" class="button">FPL Insights</a>
+        <a href="chess.html" class="button">Chess Insights</a>
+        <a href="philosophy.html" class="button">Philosophy Insights</a>
+    </nav>
+
+    <h2>Chess Insights</h2>
+    <div class="chess-content">
+        <button type="button" class="collapsible">Popular Chess Openings</button>
+        <div class="content">
+            <ul>
+                <li><strong>Ruy-Lopez (Spanish Opening):</strong> Moves: 1.e4 e5 2.Nf3 Nc6 3.Bb5</li>
+                <li><strong>Sicilian Defense:</strong> Moves: 1.e4 c5</li>
+                <li><strong>Queen's Gambit:</strong> Moves: 1.d4 d5 2.c4</li>
+            </ul>
+        </div>
+
+        <button type="button" class="collapsible">Key Strategic Tips</button>
+        <div class="content">
+            <ul>
+                <li>Control the center early in the game for better mobility and flexibility.</li>
+                <li>Develop your pieces efficiently—don't move the same piece multiple times without reason.</li>
+                <li>Keep your king safe by castling early.</li>
+                <li>Consider pawn structure when planning your moves.</li>
+            </ul>
+        </div>
+
+        <button type="button" class="collapsible">Recommended Resources</button>
+        <div class="content">
+            <ul>
+                <li><a href="https://www.chess.com/lessons" target="_blank">Chess.com Lessons</a></li>
+                <li><a href="https://lichess.org/" target="_blank">Lichess</a></li>
+                <li><a href="https://www.chessable.com/" target="_blank">Chessable</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Test Your Chess Knowledge</h2>
+    <div class="quiz">
+        <p>What is the most common first move in chess?</p>
+        <button onclick="checkAnswer('a')">a) 1.e4</button>
+        <button onclick="checkAnswer('b')">b) 1.d4</button>
+        <button onclick="checkAnswer('c')">c) 1.c4</button>
+        <button onclick="checkAnswer('d')">d) 1.Nf3</button>
+        <p id="quiz-result"></p>
+    </div>
+
+    <script>
+        // Collapsible sections
+        const collapsibles = document.querySelectorAll(".collapsible");
+        collapsibles.forEach(button => {
+            button.addEventListener("click", () => {
+                button.classList.toggle("active");
+                const content = button.nextElementSibling;
+                content.style.display = content.style.display === "block" ? "none" : "block";
+            });
+        });
+
+        // Quiz functionality
+        function checkAnswer(choice) {
+            const result = document.getElementById("quiz-result");
+            if (choice === 'a') {
+                result.textContent = "Correct! 1.e4 is the most common opening move.";
+                result.style.color = "green";
+            } else {
+                result.textContent = "Incorrect. The correct answer is 1.e4.";
+                result.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
