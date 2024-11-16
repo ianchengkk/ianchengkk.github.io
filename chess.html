@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.2">
-    <title>Lucky 235 - Chess Insights</title>
+    <title>Lucky 235 - Home</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,7 +33,7 @@
         .button:hover {
             background-color: #0056b3;
         }
-        .chess-content {
+        .home-content {
             text-align: left;
             margin: 20px auto;
             max-width: 800px;
@@ -60,77 +60,45 @@
             background-color: #f1f1f1;
             margin-bottom: 10px;
         }
-        .quiz {
-            margin-top: 20px;
-            text-align: left;
-            background-color: #f9f9f9;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .quiz button {
-            margin-top: 10px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .quiz button:hover {
-            background-color: #45a049;
-        }
     </style>
 </head>
 <body>
-    <h1>Welcome to Lucky 235 - Chess Insights</h1>
+    <h1>Welcome to Lucky 235</h1>
 
     <nav>
-        <a href="https://lucky235.com" class="button" target="_blank">Home</a>
         <a href="fpl.html" class="button">FPL Insights</a>
         <a href="chess.html" class="button">Chess Insights</a>
         <a href="philosophy.html" class="button">Philosophy Insights</a>
+        <a href="https://lucky235.com" class="button" target="_blank">Visit Full Site</a>
     </nav>
 
-    <h2>Chess Insights</h2>
-    <div class="chess-content">
-        <button type="button" class="collapsible">Popular Chess Openings</button>
-        <div class="content">
-            <ul>
-                <li><strong>Ruy-Lopez (Spanish Opening):</strong> Moves: 1.e4 e5 2.Nf3 Nc6 3.Bb5</li>
-                <li><strong>Sicilian Defense:</strong> Moves: 1.e4 c5</li>
-                <li><strong>Queen's Gambit:</strong> Moves: 1.d4 d5 2.c4</li>
-            </ul>
-        </div>
-
-        <button type="button" class="collapsible">Key Strategic Tips</button>
-        <div class="content">
-            <ul>
-                <li>Control the center early in the game for better mobility and flexibility.</li>
-                <li>Develop your pieces efficiently—don't move the same piece multiple times without reason.</li>
-                <li>Keep your king safe by castling early.</li>
-                <li>Consider pawn structure when planning your moves.</li>
-            </ul>
-        </div>
-
-        <button type="button" class="collapsible">Recommended Resources</button>
-        <div class="content">
-            <ul>
-                <li><a href="https://www.chess.com/lessons" target="_blank">Chess.com Lessons</a></li>
-                <li><a href="https://lichess.org/" target="_blank">Lichess</a></li>
-                <li><a href="https://www.chessable.com/" target="_blank">Chessable</a></li>
-            </ul>
-        </div>
+    <h2>About Lucky 235</h2>
+    <div class="home-content">
+        <p>Lucky 235 is your go-to destination for insights into Fantasy Premier League, Chess, and Philosophy. Explore curated content, fun facts, strategies, and interactive experiences to enrich your knowledge and skills.</p>
     </div>
 
-    <h2>Test Your Chess Knowledge</h2>
-    <div class="quiz">
-        <p>What is the most common first move in chess?</p>
-        <button onclick="checkAnswer('a')">a) 1.e4</button>
-        <button onclick="checkAnswer('b')">b) 1.d4</button>
-        <button onclick="checkAnswer('c')">c) 1.c4</button>
-        <button onclick="checkAnswer('d')">d) 1.Nf3</button>
-        <p id="quiz-result"></p>
+    <button type="button" class="collapsible">Why Lucky 235?</button>
+    <div class="content">
+        <ul>
+            <li><strong>Comprehensive Insights:</strong> Dive into detailed strategies for FPL, Chess, and philosophical musings.</li>
+            <li><strong>Interactive Learning:</strong> Test your knowledge with quizzes, discover fun facts, and enjoy memes.</li>
+            <li><strong>Engaging Design:</strong> A user-friendly interface to make learning enjoyable.</li>
+        </ul>
+    </div>
+
+    <button type="button" class="collapsible">Explore Our Sections</button>
+    <div class="content">
+        <ul>
+            <li><strong>FPL Insights:</strong> Tips and tricks to dominate Fantasy Premier League.</li>
+            <li><strong>Chess Insights:</strong> Popular openings, strategies, and resources to improve your game.</li>
+            <li><strong>Philosophy Insights:</strong> Fun facts about philosophers, memes, and deep reflections.</li>
+        </ul>
+    </div>
+
+    <button type="button" class="collapsible">How to Connect</button>
+    <div class="content">
+        <p>Visit our full website at <a href="https://lucky235.com" target="_blank">Lucky235.com</a> for more content and updates.</p>
+        <p>Follow us on social media to stay updated!</p>
     </div>
 
     <script>
@@ -143,18 +111,6 @@
                 content.style.display = content.style.display === "block" ? "none" : "block";
             });
         });
-
-        // Quiz functionality
-        function checkAnswer(choice) {
-            const result = document.getElementById("quiz-result");
-            if (choice === 'a') {
-                result.textContent = "Correct! 1.e4 is the most common opening move.";
-                result.style.color = "green";
-            } else {
-                result.textContent = "Incorrect. The correct answer is 1.e4.";
-                result.style.color = "red";
-            }
-        }
     </script>
 </body>
 </html>
