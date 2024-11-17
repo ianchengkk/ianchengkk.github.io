@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.2">
+    <title>Fantasy Premier League Insights</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+	    background-color: #E6E6FA
+        }
+        h1 {
+            color: #4CAF50;
+        }
+	.button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+	input { margin: 10px; padding: 5px; };
+        }
+        h3 {
+            color: #007BFF;
+        }
+        .stock-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .stock-list li {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+<link rel="stylesheet" href="styles.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6549657787664471"
+     crossorigin="anonymous"></script>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WMDRX5QE21"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WMDRX5QE21');
+</script>
+<body>
+      <header>
+        <h1>Fantasy Premier League Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#team">My Team</a></li>
+                <li><a href="#stats">Player Stats</a></li>
+                <li><a href="#points">My Points</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section for managing the user's team -->
+        <section id="team">
+            <h2>My Team</h2>
+            <div id="team-container" class="card-grid">
+                <!-- Dynamically generated team players will appear here -->
+            </div>
+            <button id="save-team">Save Team</button>
+        </section>
+
+        <!-- Section for displaying FPL player statistics -->
+        <section id="stats">
+            <h2>Player Stats</h2>
+            <input type="text" id="search-player" placeholder="Search Player" />
+            <div id="stats-container" class="card-grid">
+                <!-- Dynamically generated player stats will appear here -->
+            </div>
+        </section>
+
+        <!-- Section for displaying the user's total points -->
+        <section id="points">
+            <h2>My Points</h2>
+            <p id="points-display">Total Points: <span>0</span></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Powered by the FPL API | Fantasy Premier League Manager</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
